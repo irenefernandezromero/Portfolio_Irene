@@ -571,9 +571,6 @@ section {
 
 /* Móviles (hasta 768px) */
 @media (max-width: 768px) {
-    header {
-        position: relative;
-    }
 
     #navbar {
         flex-direction: column;
@@ -631,4 +628,63 @@ section {
         height: 35px;
         font-size: 1rem;
     }
+
+}
+
+/* === HAMBURGER MENU (solo en móvil y tablet) === */
+
+#menu-toggle {
+    display: none;
+}
+  
+  /* Icono hamburguesa */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+  
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+  
+@media (max-width: 1024px) {
+    .hamburger {
+      display: flex;
+    }
+  
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: rgba(10, 10, 10, 0.95);
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      border-top: 1px solid var(--border-color);
+      gap: 0;
+    }
+  
+    .nav-links li {
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+  
+    /* Mostrar menú cuando se activa el checkbox */
+    #menu-toggle:checked ~ .nav-links {
+      max-height: 500px;
+    }
+  
 }
