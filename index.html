@@ -262,6 +262,44 @@
         body.style.backgroundColor = colors["sobremi"];
       </script>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-links a");
+    
+      function activateMenuOnScroll() {
+        const scrollY = window.scrollY + 150; // margen de detección
+    
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute("id");
+    
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${sectionId}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }
+    
+      // Detectar scroll y actualizar menú
+      window.addEventListener("scroll", activateMenuOnScroll);
+    
+      // También activar al hacer clic en un enlace
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          navLinks.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+    });
+    </script>
+
 </body>
 
 </html>
